@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+const exchangeRate = 0.012; 
+
+function convertCurrency(amount, fromCurrency, toCurrency) {
+    if (fromCurrency === "INR" && toCurrency === "USD") {
+        return amount * exchangeRate;
+    } else if (fromCurrency === "USD" && toCurrency === "INR") {
+        return amount / exchangeRate;
+    } else {
+        return "Unsupported currency conversion";
+    }
+}
+
+function handleConversion() {
+    const amount = parseFloat(prompt("Enter the amount to convert:"));
+    const fromCurrency = prompt("Enter the currency to convert from ( INR , USD):").toUpperCase();
+    const toCurrency = prompt("Enter the currency to convert to (INR , USD):").toUpperCase();
+
+    const convertedAmount = convertCurrency(amount, fromCurrency, toCurrency);
+
+    if (typeof convertedAmount === "number") {
+        alert(`${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`);
+    } else {
+        alert(convertedAmount);
+    }
+}
+
+handleConversion();
+
+    </script>
+</body>
+</html>
